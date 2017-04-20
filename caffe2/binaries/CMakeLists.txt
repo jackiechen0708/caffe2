@@ -1,6 +1,5 @@
 # ---[ Binaries
 set(Caffe2_CPU_BINARY_SRCS
-    "convert_caffe_image_db.cc"
     "convert_db.cc"
     "db_throughput.cc"
     "make_cifar_db.cc"
@@ -11,6 +10,11 @@ set(Caffe2_CPU_BINARY_SRCS
     "speed_benchmark.cc"
     "split_db.cc"
 )
+
+if (USE_CAFFE_PROTO)
+  set(Caffe2_CPU_BINARY_SRCS ${Caffe2_CPU_BINARY_SRCS}
+      "convert_caffe_image_db.cc")
+endif()
 
 set(Caffe2_GPU_BINARY_SRCS
     # "core_overhead_benchmark.cc" # todo: will need to figure out its dependency because it relies on benchmark

@@ -74,7 +74,17 @@ endif()
 set(Caffe2_MAIN_LIBS_ORDER ${Caffe2_MAIN_LIBS})
 
 # Compile exposed libraries.
-add_library(Caffe2_CPU ${Caffe2_CPU_SRCS} $<TARGET_OBJECTS:Caffe_PROTO> $<TARGET_OBJECTS:Caffe2_PROTO>)
+if (USE_CAFFE_PROTO)
+  add_library(
+      Caffe2_CPU ${Caffe2_CPU_SRCS}
+      $<TARGET_OBJECTS:Caffe_PROTO>
+      $<TARGET_OBJECTS:Caffe2_PROTO>)
+else()
+  add_library(
+      Caffe2_CPU ${Caffe2_CPU_SRCS}
+      $<TARGET_OBJECTS:Caffe2_PROTO>)
+endif()
+
 target_link_libraries(Caffe2_CPU ${Caffe2_DEPENDENCY_LIBS})
 install(TARGETS Caffe2_CPU DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 list(APPEND Caffe2_MAIN_LIBS_ORDER Caffe2_CPU)

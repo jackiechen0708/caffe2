@@ -55,6 +55,9 @@ option(USE_ROCKSDB "Use RocksDB" ON)
 option(USE_REDIS "Use Redis" OFF)
 option(USE_MPI "Use MPI" ON)
 option(USE_GLOO "Use Gloo" ON)
+option(USE_CAFFE_PROTO
+       "Build Caffe proto into Caffe2. If you install Caffe separately, turn this off."
+       OFF)
 option(BUILD_SHARED_LIBS "Build libcaffe2.so" ON)
 option(USE_OPENMP "Use OpenMP for parallel code" ON)
 option(BUILD_PYTHON "Build python binaries" ON)
